@@ -1,0 +1,33 @@
+<!-- 
+express 실습 2-1
+body(express.urlencoded) 미들웨어 사용 실습에 필요
+form 태그의 method를 get과 post로 바꾸어 
+urlencoded data의 전달과정 및 처리 방법을 실습 
+-->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <title>Login Page</title>
+  <link rel="stylesheet" href="./frontUser.css" />
+</head>
+
+<body>
+  <nav>
+    <a href="/">로그인</a>
+    <a href="/visit">방문기록</a>
+    <a href="/upload">파일전송</a>   
+  </nav>
+
+  <h2>Login</h2> 
+  <div>
+    <form id="form" action='/admit' method='post'>
+      <label>UserName</label>
+      <input type="text" name="login"><br>
+      <label>Password</label>
+      <input type="password" name="password"><p>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
