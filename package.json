@@ -1,7 +1,7 @@
 {
   "name": "learn_express_v1",
   "version": "1.0.0",
-  "description": "",
+  "description": "GET -> method\r POST -> method\r PUT -> JS 코드로 수행\r DELETE -> JS 코드로 수행",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,10 +12,12 @@
   "license": "ISC",
   "dependencies": {
     "cookie-parse": "^0.4.0",
+    "cookie-parser": "^1.4.6",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-session": "^1.18.0",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"

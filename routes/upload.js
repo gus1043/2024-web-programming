@@ -1,10 +1,32 @@
-const express = require("express");
-const path = require("path");
+// 수업참여0507-최지현(60211704)
+const express = require('express');
+const multer = require('multer');
+const path = require('path');
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../public/upload.html"));
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/');
+    },
+    filename: function (req, file, cb) {
+        const ext = path.extname(file.originalname);
+        cb(null, path.basename(file.originalname, ext) + Date.now() + ext);
+    },
+});
+
+const upload = multer({
+    storage: storage,
+    limits: { fileSize: 5 * 1024 * 1024 },
+});
+
+router.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/upload.html'));
+});
+
+router.post('/', upload.single('image'), (req, res) => {
+    console.log(req.file, req.body);
+    res.send(`${req.file.originalname} Uploaded!`);
 });
 
 module.exports = router;
