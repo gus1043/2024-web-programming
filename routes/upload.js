@@ -24,9 +24,14 @@ router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/upload.html'));
 });
 
-router.post('/', upload.single('image'), (req, res) => {
+router.post('/', upload.array('manyImages'), (req, res) => {
     console.log(req.file, req.body);
-    res.send(`${req.file.originalname} Uploaded!`);
+
+    const filenames = req.files.reduce((filenames, file) => {
+        filenames = filenames.concat(file.originalname, '/');
+        return filenames;
+    }, '');
+    res.send(`${filenames} Uploaded!`);
 });
 
 module.exports = router;
